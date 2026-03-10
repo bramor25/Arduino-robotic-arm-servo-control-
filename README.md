@@ -24,6 +24,7 @@ This project is a 5-axis robotic arm controlled using an Arduino Uno and dual jo
 -HC-SR04 Ultrasonic Sensor
 - External battery pack
 -Breadboard and jumper wires
+- 2x Capacitors
 
 ## System Architecture
 

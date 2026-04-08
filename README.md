@@ -18,12 +18,19 @@ This project is a 5-axis robotic arm controlled using an Arduino Uno and dual jo
 ## Hardware Used
 
 - Arduino Uno
+  
 - Sensor Shield V5
+  
 - 5x Servo Motors
+  
 - 2x Analog Joysticks
+  
 -HC-SR04 Ultrasonic Sensor
+
 - External battery pack
+  
 -Breadboard and jumper wires
+
 -LM2596 DC-DC Buck Power Converter 
 
 ## System Architecture

@@ -1,19 +1,20 @@
-# Arduino Robotic Arm with Joystick Control
+# Arduino Robotic Arm with Joystick and Ultrasonic Control
 
 🚧 Status: Functional Prototype Completed – Ongoing Improvements
 
 ## Overview
-This project is a 5-axis robotic arm controlled using an Arduino Uno and dual joystick inputs. The system enables real-time manual control of multiple servo motors and demonstrates core embedded systems concepts including analog input processing, actuator control, and hardware debugging.
+This project is a 5-axis robotic arm controlled using an Arduino Uno with both manual joystick input and automated ultrasonic sensing. The system demonstrates real-time control of servo motors, sensor-based decision making, and embedded system integration.
 
-This project was built to strengthen hands-on skills in embedded systems, servo motor control, and real-time hardware interaction.
+This project was built to strengthen hands-on skills in embedded systems, actuator control, sensor integration, and hardware debugging.
 
 ---
 
 ## Features
 - 5-DOF robotic arm controlled with servo motors  
-- Dual joystick input for directional control  
-- Real-time response to analog inputs  
-- Button-triggered actions (grip control / reset)  
+- Dual joystick input for manual control  
+- Ultrasonic sensor for object detection  
+- Automated pick-and-place sequence based on distance  
+- Real-time response to analog and digital inputs  
 - External power integration for stable servo operation  
 
 ---
@@ -30,24 +31,30 @@ This project was built to strengthen hands-on skills in embedded systems, servo 
 ---
 
 ## Pin Connections
+### Servos
 - Servo 1 (Base): Pin 9  
 - Servo 2 (Shoulder): Pin 6  
-- Servo 3 (Middle): Pin 5  
+- Servo 3 (Elbow): Pin 5  
 - Servo 4 (Wrist): Pin 3  
 - Servo 5 (Claw): Pin 11  
 
-- Joystick 1 X: A1  
-- Joystick 1 Y: A0  
-- Joystick 1 Button: Pin 7  
+### Joystick
+- Joystick X: A1  
+- Joystick Y: A0  
+- Joystick Button: Pin 7  
 
-- Joystick 2 X: A3  
-- Joystick 2 Y: A4  
-- Joystick 2 Button: Pin 12  
+### Ultrasonic Sensor
+- Trig Pin: 2  
+- Echo Pin: 4  
 
 ---
 
 ## Code Structure
-- `code/joystick_control.ino` – Handles joystick input processing and maps commands to servo movement  
+- `code/joystick_control.ino`  
+  Handles real-time joystick input and maps analog values to servo movement  
+
+- `code/ultrasonic_pick_and_place.ino`  
+  Uses HC-SR04 distance measurements to trigger automated servo movement sequences for object pickup and release  
 
 ---
 
@@ -64,13 +71,22 @@ This project was built to strengthen hands-on skills in embedded systems, servo 
   - Cause: initial use of pin 0 (RX pin) interfered with serial communication  
   - Fix: reassigned to a dedicated digital input pin  
 
+- **Unstable distance triggering**  
+  - Cause: ultrasonic sensor readings fluctuate slightly  
+  - Fix: adjusted thresholds and timing delays for more consistent detection  
+
 ---
 
 ## How It Works
+### Manual Mode
 - Joystick inputs are read using `analogRead()`  
 - Threshold logic determines movement direction  
 - Commands are mapped to servo positions  
-- Button inputs trigger additional actions such as grip control  
+
+### Automatic Mode
+- Ultrasonic sensor measures distance to object  
+- When object is within a set threshold, a pick-and-place sequence is triggered  
+- Predefined servo movements control grabbing and placement  
 
 ---
 
@@ -79,5 +95,16 @@ This project was built to strengthen hands-on skills in embedded systems, servo 
 - Fully 3D-printed robotic arm structure  
 - Improved motion control (inverse kinematics)  
 - Wireless control (Bluetooth or WiFi integration)  
+- Mode switching between manual and automatic control  
 
 ---
+
+## Project Photos
+(Add images here)
+
+---
+
+## Author
+Brandon Moran  
+Electronics Engineering Technology Student  
+Savannah State University  

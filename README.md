@@ -90,6 +90,11 @@ This project was built to strengthen hands-on skills in embedded systems, actuat
 
 ---
 
+## System Diagram
+![Block Diagram](images/block_diagram.png)
+
+
+
 ## Future Improvements
 - Custom PCB design using KiCad  
 - Fully 3D-printed robotic arm structure  

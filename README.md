@@ -98,13 +98,3 @@ This project was built to strengthen hands-on skills in embedded systems, actuat
 - Mode switching between manual and automatic control  
 
 ---
-
-## Project Photos
-(Add images here)
-
----
-
-## Author
-Brandon Moran  
-Electronics Engineering Technology Student  
-Savannah State University  

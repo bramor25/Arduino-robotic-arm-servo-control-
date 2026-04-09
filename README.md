@@ -1,38 +1,83 @@
 # Arduino Robotic Arm with Joystick Control
 
+🚧 Status: Functional Prototype Completed – Ongoing Improvements
 
-🚧 Status: Work in Progress
+## Overview
+This project is a 5-axis robotic arm controlled using an Arduino Uno and dual joystick inputs. The system enables real-time manual control of multiple servo motors and demonstrates core embedded systems concepts including analog input processing, actuator control, and hardware debugging.
 
+This project was built to strengthen hands-on skills in embedded systems, servo motor control, and real-time hardware interaction.
 
-## Project Overview
+---
 
-This project is a 5-axis robotic arm controlled using an Arduino Uno and dual joystick inputs. The system uses a sensor shield to simplify servo connections and an ultrasonic sensor to detect distance for potential obstacle awareness.
+## Features
+- 5-DOF robotic arm controlled with servo motors  
+- Dual joystick input for directional control  
+- Real-time response to analog inputs  
+- Button-triggered actions (grip control / reset)  
+- External power integration for stable servo operation  
 
- The goal of this project was to gain hands-on experience with:
-
-- Microcontroller programming
-- Servo motor control
-- Analog sensor inputs
-- Real-time hardware troubleshooting
+---
 
 ## Hardware Used
+- Arduino Uno (Elegoo R3)  
+- Sensor Shield V5  
+- 5x Servo Motors  
+- 2x Analog Joysticks  
+- HC-SR04 Ultrasonic Sensor  
+- External Battery Pack  
+- Breadboard and jumper wires  
 
-- Arduino Uno
-- Sensor Shield V5
-- 5x Servo Motors
-- 2x Analog Joysticks 
-- HC-SR04 Ultrasonic Sensor
-- External battery pack  
-- Breadboard and jumper wires
-- LM2596 DC-DC Buck Power Converter 
+---
 
-## System Architecture
+## Pin Connections
+- Servo 1 (Base): Pin 9  
+- Servo 2 (Shoulder): Pin 6  
+- Servo 3 (Middle): Pin 5  
+- Servo 4 (Wrist): Pin 3  
+- Servo 5 (Claw): Pin 11  
 
-Joystick inputs are read using Arduino analog pins. 
-The values are mapped to servo angles and transmitted to the servo motors through the sensor shield.
+- Joystick 1 X: A1  
+- Joystick 1 Y: A0  
+- Joystick 1 Button: Pin 7  
 
-## Engineering Challenges
+- Joystick 2 X: A3  
+- Joystick 2 Y: A4  
+- Joystick 2 Button: Pin 12  
 
-- Servo jitter caused by insufficient power when using Arduino 5V rail
-- Joystick center calibration issues
-- Managing stable power distribution for multiple servos
+---
+
+## Code Structure
+- `code/joystick_control.ino` – Handles joystick input processing and maps commands to servo movement  
+
+---
+
+## Challenges and Fixes
+- **Servo jitter issue**  
+  - Cause: insufficient power from Arduino USB  
+  - Fix: added external battery pack for stable operation  
+
+- **False joystick movement**  
+  - Cause: floating analog inputs when not connected  
+  - Fix: proper wiring and threshold tuning  
+
+- **Button input conflict**  
+  - Cause: initial use of pin 0 (RX pin) interfered with serial communication  
+  - Fix: reassigned to a dedicated digital input pin  
+
+---
+
+## How It Works
+- Joystick inputs are read using `analogRead()`  
+- Threshold logic determines movement direction  
+- Commands are mapped to servo positions  
+- Button inputs trigger additional actions such as grip control  
+
+---
+
+## Future Improvements
+- Custom PCB design using KiCad  
+- Fully 3D-printed robotic arm structure  
+- Improved motion control (inverse kinematics)  
+- Wireless control (Bluetooth or WiFi integration)  
+
+---
